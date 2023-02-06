@@ -12,7 +12,7 @@ class NetworkManager {
     
     private init() {}
     
-    private func simpleRequest(
+    func request(
         requestModel: RequestModel,
         completionHandler: @escaping (Swift.Result<String, NetworkError>) -> Void
     ) {
