@@ -7,7 +7,11 @@
 
 import Foundation
 
-enum NibName : String {
+enum Storyboards : String {
+    case MOVIESDETAILSVIEWCONTROLLER = "MovieDetailsViewController"
+}
+
+enum NibNames : String {
     case MOVIESLISTTABLEVIEWCELL = "MoviesListTableViewCell"
 }
 

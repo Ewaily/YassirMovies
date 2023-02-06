@@ -22,7 +22,7 @@ class MoviesListViewController: UIViewController {
     }()
     
     // MARK: - IBOutlets -
-
+    
     @IBOutlet private var moviesListTableView: UITableView!
     
     // MARK: - Lifecycle -
@@ -48,16 +48,25 @@ class MoviesListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        let moviesListCelll = UINib(nibName: NibName.MOVIESLISTTABLEVIEWCELL.rawValue, bundle: nil)
+        let moviesListCelll = UINib(nibName: NibNames.MOVIESLISTTABLEVIEWCELL.rawValue, bundle: nil)
         moviesListTableView.rowHeight = UITableView.automaticDimension
         moviesListTableView.separatorStyle = .none
-        moviesListTableView.register(moviesListCelll, forCellReuseIdentifier: NibName.MOVIESLISTTABLEVIEWCELL.rawValue)
+        moviesListTableView.register(moviesListCelll, forCellReuseIdentifier: NibNames.MOVIESLISTTABLEVIEWCELL.rawValue)
         moviesListTableView.delegate = self
         moviesListTableView.dataSource = self
     }
 }
 
 extension MoviesListViewController: MoviesListPresenterResponseDelegate {
+    func navigateToMovieDetailsScreen(movie: Result) {
+        let viewController = MovieDetailsViewController(nibName: Storyboards.MOVIESDETAILSVIEWCONTROLLER.rawValue, bundle: nil)
+        let presenter = MovieDetailsPresenter(delegate: viewController, movie: movie)
+        viewController.presenter = presenter
+        if let navigator = navigationController {
+            navigator.pushViewController(viewController, animated: true)
+        }
+    }
+    
     func showIndicatorView() {
         DispatchQueue.main.async {
             self.indicatorView.startAnimating()
@@ -93,7 +102,9 @@ extension MoviesListViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectRow(index: indexPath.row)
+    }
 }
 
 extension MoviesListViewController: UITableViewDataSource {
@@ -109,7 +120,7 @@ extension MoviesListViewController: UITableViewDataSource {
         guard let presenter = presenter else { return UITableViewCell() }
         
         if let cell = tableView.dequeueReusableCell(
-            withIdentifier: NibName.MOVIESLISTTABLEVIEWCELL.rawValue,
+            withIdentifier: NibNames.MOVIESLISTTABLEVIEWCELL.rawValue,
             for: indexPath
         ) as? MoviesListTableViewCell {
             cell.setupCell(presenter.getMoviesListTableViewCellModel(index: indexPath.row))

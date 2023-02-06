@@ -11,6 +11,7 @@ protocol MoviesListPresenterProtocol {
     func viewDidLoad()
     func getSectionRows() -> Int
     func getMoviesListTableViewCellModel(index: Int) -> MoviesListTableViewCellModel
+    func didSelectRow(index: Int)
 }
 
 protocol MoviesListPresenterResponseDelegate: AnyObject {
@@ -18,6 +19,7 @@ protocol MoviesListPresenterResponseDelegate: AnyObject {
     func hideIndicatorView()
     func showErrorAlert()
     func loadTableView()
+    func navigateToMovieDetailsScreen(movie: Result)
 }
 
 class MoviesListPresenter {
@@ -46,6 +48,11 @@ class MoviesListPresenter {
 // MARK: - Extensions -
 
 extension MoviesListPresenter: MoviesListPresenterProtocol {
+    func didSelectRow(index: Int) {
+        guard let moviesList = moviesList, !moviesList.isEmpty else { return }
+        delegate?.navigateToMovieDetailsScreen(movie: moviesList[index])
+    }
+    
     func getMoviesListTableViewCellModel(index: Int) -> MoviesListTableViewCellModel {
         guard let moviesList = moviesList else { return .init(title: "", releaseDate: "", imageURL: "") }
 

@@ -16,6 +16,11 @@ protocol MoviesRepositoryResponseDelegate: AnyObject {
     func getMoviesFailed(error: NetworkError)
 }
 
+extension MoviesRepositoryResponseDelegate {
+    func getMoviesSuccess(jsonResponse: String) {}
+    func getMoviesFailed(error: NetworkError) {}
+}
+
 class MoviesRepository {
     // MARK: - Public properties -
     
