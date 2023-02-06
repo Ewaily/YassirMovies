@@ -13,6 +13,7 @@
 		42ACCE11299154E300EE8D8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42ACCE0F299154E300EE8D8B /* Main.storyboard */; };
 		42ACCE13299154E400EE8D8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42ACCE12299154E400EE8D8B /* Assets.xcassets */; };
 		42ACCE16299154E400EE8D8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42ACCE14299154E400EE8D8B /* LaunchScreen.storyboard */; };
+		42ACCE2329915D1D00EE8D8B /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE2229915D1D00EE8D8B /* MoviesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		42ACCE12299154E400EE8D8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42ACCE15299154E400EE8D8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42ACCE17299154E400EE8D8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42ACCE2229915D1D00EE8D8B /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,56 @@
 		42ACCE08299154E300EE8D8B /* YassirMovies */ = {
 			isa = PBXGroup;
 			children = (
-				42ACCE09299154E300EE8D8B /* AppDelegate.swift */,
-				42ACCE0B299154E300EE8D8B /* SceneDelegate.swift */,
+				42ACCE2029915B3000EE8D8B /* Modules */,
+				42ACCE1D299156F900EE8D8B /* Delegates */,
+				42ACCE1E2991574100EE8D8B /* Resources */,
+				42ACCE1F2991577F00EE8D8B /* LaunchScreen */,
 				42ACCE0D299154E300EE8D8B /* ViewController.swift */,
 				42ACCE0F299154E300EE8D8B /* Main.storyboard */,
-				42ACCE12299154E400EE8D8B /* Assets.xcassets */,
-				42ACCE14299154E400EE8D8B /* LaunchScreen.storyboard */,
-				42ACCE17299154E400EE8D8B /* Info.plist */,
 			);
 			path = YassirMovies;
+			sourceTree = "<group>";
+		};
+		42ACCE1D299156F900EE8D8B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				42ACCE09299154E300EE8D8B /* AppDelegate.swift */,
+				42ACCE0B299154E300EE8D8B /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		42ACCE1E2991574100EE8D8B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42ACCE12299154E400EE8D8B /* Assets.xcassets */,
+				42ACCE17299154E400EE8D8B /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		42ACCE1F2991577F00EE8D8B /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				42ACCE14299154E400EE8D8B /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		42ACCE2029915B3000EE8D8B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				42ACCE2129915D1000EE8D8B /* Models */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		42ACCE2129915D1000EE8D8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				42ACCE2229915D1D00EE8D8B /* MoviesModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42ACCE2329915D1D00EE8D8B /* MoviesModel.swift in Sources */,
 				42ACCE0E299154E300EE8D8B /* ViewController.swift in Sources */,
 				42ACCE0A299154E300EE8D8B /* AppDelegate.swift in Sources */,
 				42ACCE0C299154E300EE8D8B /* SceneDelegate.swift in Sources */,
@@ -289,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6675BR2529;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = YassirMovies/Info.plist;
+				INFOPLIST_FILE = YassirMovies/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,7 +362,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6675BR2529;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = YassirMovies/Info.plist;
+				INFOPLIST_FILE = YassirMovies/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
