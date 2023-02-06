@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ckd-7P-fR9">
                         <rect key="frame" x="8" y="0.0" width="705" height="240"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aXn-Ra-8pW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="aXn-Ra-8pW">
                                 <rect key="frame" x="12" y="30" width="120" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="24P-wQ-Wb4"/>
@@ -75,4 +75,7 @@
             <point key="canvasLocation" x="5.343511450381679" y="74.295774647887328"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="img_placeholder" width="555" height="682"/>
+    </resources>
 </document>

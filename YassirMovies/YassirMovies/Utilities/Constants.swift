@@ -34,3 +34,7 @@ struct NetworkConstants {
     static let API_KEY_VALUE = "c9856d0cb57c3f14bf75bdc6c063b8f3"
     static let IMAGE_BASE_PATH = "https://image.tmdb.org/t/p/w500"
 }
+
+struct Images {
+    static let PLACEHOLDER = "img_placeholder"
+}

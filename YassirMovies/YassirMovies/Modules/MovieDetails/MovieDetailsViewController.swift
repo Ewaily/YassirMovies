@@ -13,13 +13,29 @@ class MovieDetailsViewController: UIViewController {
     var presenter: MovieDetailsPresenterProtocol!
     
     // MARK: - IBOutlets -
-
-    @IBOutlet private var moviesListTableView: UITableView!
+    
+    @IBOutlet private var moviePosterImageView: UIImageView!
+    @IBOutlet private var movieTitleLabel: UILabel!
+    @IBOutlet private var movieReleaseDateLabel: UILabel!
+    @IBOutlet private var movieOverViewLabel: UILabel!
     
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+    }
+    
+    private func setupViews() {
+        self.navigationItem.title = presenter.getMovieTitle()
+        movieTitleLabel.text = presenter.getMovieTitle()
+        movieReleaseDateLabel.text = presenter.getMovieReleaseDate()
+        movieOverViewLabel.text = presenter.getMovieOverView()
+        guard let imageURL = presenter.getMoviePosterURL() else {
+            moviePosterImageView.image = UIImage(named: Images.PLACEHOLDER)
+            return
+        }
+        moviePosterImageView.load(url: imageURL)
     }
 }
 
