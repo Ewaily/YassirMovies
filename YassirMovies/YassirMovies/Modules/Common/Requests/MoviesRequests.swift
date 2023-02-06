@@ -20,7 +20,7 @@ enum MoviesRequests: RequestModel {
     var path: String {
         switch self {
         case .listMovies:
-            return "https://api.themoviedb.org/3/discover/movie"
+            return EndPoints.LIST_MOVIES
         }
     }
 
@@ -34,7 +34,7 @@ enum MoviesRequests: RequestModel {
     var paramters: [String: Any]? {
         switch self {
         case .listMovies:
-            return ["api_key": "c9856d0cb57c3f14bf75bdc6c063b8f3"]
+            return [ParamterKeys.API_KEY: NetworkConstants.API_KEY_VALUE]
         }
     }
 

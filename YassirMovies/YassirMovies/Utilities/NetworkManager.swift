@@ -61,7 +61,6 @@ class NetworkManager {
                 return
             }
             completionHandler(.success(responseString))
-            print("Response String = \(responseString)")
         }
         
         task.resume()

@@ -21,6 +21,11 @@
 		42ACCE3C2991839200EE8D8B /* MoviesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE3B2991839200EE8D8B /* MoviesListPresenter.swift */; };
 		42ACCE3F2991853600EE8D8B /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE3D2991853600EE8D8B /* MoviesListViewController.swift */; };
 		42ACCE402991853600EE8D8B /* MoviesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42ACCE3E2991853600EE8D8B /* MoviesListViewController.xib */; };
+		42ACCE4429918CBF00EE8D8B /* MoviesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE4229918CBF00EE8D8B /* MoviesListTableViewCell.swift */; };
+		42ACCE4529918CBF00EE8D8B /* MoviesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42ACCE4329918CBF00EE8D8B /* MoviesListTableViewCell.xib */; };
+		42ACCE4729918D4900EE8D8B /* MoviesListTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE4629918D4900EE8D8B /* MoviesListTableViewCellModel.swift */; };
+		42ACCE4929918EC600EE8D8B /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE4829918EC600EE8D8B /* UIImageView+Extensions.swift */; };
+		42ACCE4B29919AEF00EE8D8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCE4A29919AEF00EE8D8B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +45,11 @@
 		42ACCE3B2991839200EE8D8B /* MoviesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenter.swift; sourceTree = "<group>"; };
 		42ACCE3D2991853600EE8D8B /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 		42ACCE3E2991853600EE8D8B /* MoviesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesListViewController.xib; sourceTree = "<group>"; };
+		42ACCE4229918CBF00EE8D8B /* MoviesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewCell.swift; sourceTree = "<group>"; };
+		42ACCE4329918CBF00EE8D8B /* MoviesListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesListTableViewCell.xib; sourceTree = "<group>"; };
+		42ACCE4629918D4900EE8D8B /* MoviesListTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewCellModel.swift; sourceTree = "<group>"; };
+		42ACCE4829918EC600EE8D8B /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		42ACCE4A29919AEF00EE8D8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +140,7 @@
 				42ACCE25299169C600EE8D8B /* RequestModel.swift */,
 				42ACCE2729916A1C00EE8D8B /* NetworkManager.swift */,
 				42ACCE2929917CF900EE8D8B /* NetworkError.swift */,
+				42ACCE4A29919AEF00EE8D8B /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -163,6 +174,7 @@
 		42ACCE32299180BC00EE8D8B /* MoviesList */ = {
 			isa = PBXGroup;
 			children = (
+				42ACCE4129918CA300EE8D8B /* TableViewCells */,
 				42ACCE33299180ED00EE8D8B /* MoviesListUseCase.swift */,
 				42ACCE3B2991839200EE8D8B /* MoviesListPresenter.swift */,
 				42ACCE3D2991853600EE8D8B /* MoviesListViewController.swift */,
@@ -175,8 +187,19 @@
 			isa = PBXGroup;
 			children = (
 				42ACCE392991825000EE8D8B /* Data+Extensions.swift */,
+				42ACCE4829918EC600EE8D8B /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		42ACCE4129918CA300EE8D8B /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				42ACCE4229918CBF00EE8D8B /* MoviesListTableViewCell.swift */,
+				42ACCE4629918D4900EE8D8B /* MoviesListTableViewCellModel.swift */,
+				42ACCE4329918CBF00EE8D8B /* MoviesListTableViewCell.xib */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +262,7 @@
 			files = (
 				42ACCE16299154E400EE8D8B /* LaunchScreen.storyboard in Resources */,
 				42ACCE13299154E400EE8D8B /* Assets.xcassets in Resources */,
+				42ACCE4529918CBF00EE8D8B /* MoviesListTableViewCell.xib in Resources */,
 				42ACCE402991853600EE8D8B /* MoviesListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,10 +276,14 @@
 			files = (
 				42ACCE2829916A1C00EE8D8B /* NetworkManager.swift in Sources */,
 				42ACCE2A29917CF900EE8D8B /* NetworkError.swift in Sources */,
+				42ACCE4429918CBF00EE8D8B /* MoviesListTableViewCell.swift in Sources */,
 				42ACCE34299180ED00EE8D8B /* MoviesListUseCase.swift in Sources */,
 				42ACCE26299169C600EE8D8B /* RequestModel.swift in Sources */,
+				42ACCE4B29919AEF00EE8D8B /* Constants.swift in Sources */,
 				42ACCE2329915D1D00EE8D8B /* MoviesModel.swift in Sources */,
 				42ACCE3129917EFE00EE8D8B /* MoviesRepository.swift in Sources */,
+				42ACCE4729918D4900EE8D8B /* MoviesListTableViewCellModel.swift in Sources */,
+				42ACCE4929918EC600EE8D8B /* UIImageView+Extensions.swift in Sources */,
 				42ACCE0A299154E300EE8D8B /* AppDelegate.swift in Sources */,
 				42ACCE3A2991825000EE8D8B /* Data+Extensions.swift in Sources */,
 				42ACCE2E29917D8400EE8D8B /* MoviesRequests.swift in Sources */,

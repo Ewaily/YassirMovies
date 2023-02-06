@@ -9,17 +9,27 @@ import Foundation
 
 protocol MoviesListPresenterProtocol {
     func viewDidLoad()
+    func getSectionRows() -> Int
+    func getMoviesListTableViewCellModel(index: Int) -> MoviesListTableViewCellModel
 }
 
-protocol MoviesListPresenterResponseDelegate: AnyObject {}
+protocol MoviesListPresenterResponseDelegate: AnyObject {
+    func showIndicatorView()
+    func hideIndicatorView()
+    func showErrorAlert()
+    func loadTableView()
+}
 
 class MoviesListPresenter {
     // MARK: - Public properties -
 
     var useCase: MoviesListUseCaseProtocol?
-
     weak var delegate: MoviesListPresenterResponseDelegate?
 
+    // MARK: - Private properties -
+
+    var moviesList: [Result]?
+    
     // MARK: - Init -
 
     init(useCase: MoviesListUseCaseProtocol? = nil, delegate: MoviesListPresenterResponseDelegate? = nil) {
@@ -36,13 +46,33 @@ class MoviesListPresenter {
 // MARK: - Extensions -
 
 extension MoviesListPresenter: MoviesListPresenterProtocol {
+    func getMoviesListTableViewCellModel(index: Int) -> MoviesListTableViewCellModel {
+        guard let moviesList = moviesList else { return .init(title: "", releaseDate: "", imageURL: "") }
+
+        let model = MoviesListTableViewCellModel(title: moviesList[index].originalTitle, releaseDate: moviesList[index].releaseDate, imageURL: moviesList[index].posterPath)
+        return model
+    }
+    
+    func getSectionRows() -> Int {
+        guard let moviesList = moviesList else { return 0 }
+        return moviesList.count
+    }
+    
     func viewDidLoad() {
+        delegate?.showIndicatorView()
         useCase?.getMovies()
     }
 }
 
 extension MoviesListPresenter: MoviesListUseCaseResponseDelegate {
-    func getMoviesSuccess(movies: Movies) {}
+    func getMoviesSuccess(movies: Movies) {
+        delegate?.hideIndicatorView()
+        self.moviesList = movies.results
+        delegate?.loadTableView()
+    }
 
-    func getMoviesFailed(error: NetworkError) {}
+    func getMoviesFailed(error: NetworkError) {
+        delegate?.hideIndicatorView()
+        delegate?.showErrorAlert()
+    }
 }
