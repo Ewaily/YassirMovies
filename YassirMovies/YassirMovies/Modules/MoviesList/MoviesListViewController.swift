@@ -58,9 +58,9 @@ class MoviesListViewController: UIViewController {
 }
 
 extension MoviesListViewController: MoviesListPresenterResponseDelegate {
-    func navigateToMovieDetailsScreen(movie: Result) {
+    func navigateToMovieDetailsScreen(movieId: Int) {
         let viewController = MovieDetailsViewController(nibName: Storyboards.MOVIESDETAILSVIEWCONTROLLER.rawValue, bundle: nil)
-        let presenter = MovieDetailsPresenter(delegate: viewController, movie: movie)
+        let presenter = MovieDetailsPresenter(delegate: viewController, movieId: movieId)
         viewController.presenter = presenter
         if let navigator = navigationController {
             navigator.pushViewController(viewController, animated: true)

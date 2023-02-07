@@ -20,10 +20,12 @@ struct Strings {
     static let ERROR = "Error"
     static let FAILED_TO_GET_YOUR_RESPONSE = "Failed to get your response!"
     static let TRY_AGAIN = "Try again"
+    static let CANCEL = "Cancel"
 }
 
 struct EndPoints {
     static let LIST_MOVIES = "https://api.themoviedb.org/3/discover/movie"
+    static let MOVIE_DETAILS = "https://api.themoviedb.org/3/movie/"
 }
 
 struct ParamterKeys {

@@ -9,16 +9,21 @@ import Foundation
 
 protocol MoviesRepositoryProtocol {
     func getMovies()
+    func getMovieDetails(movieId: Int)
 }
 
 protocol MoviesRepositoryResponseDelegate: AnyObject {
     func getMoviesSuccess(jsonResponse: String)
     func getMoviesFailed(error: NetworkError)
+    func getMovieDetailsSuccess(jsonResponse: String)
+    func getMovieDetailsFailed(error: NetworkError)
 }
 
 extension MoviesRepositoryResponseDelegate {
     func getMoviesSuccess(jsonResponse: String) {}
     func getMoviesFailed(error: NetworkError) {}
+    func getMovieDetailsSuccess(jsonResponse: String) {}
+    func getMovieDetailsFailed(error: NetworkError) {}
 }
 
 class MoviesRepository {
@@ -46,6 +51,19 @@ extension MoviesRepository: MoviesRepositoryProtocol {
                 
             case .failure(let error):
                 self.delegate?.getMoviesFailed(error: error)
+            }
+        }
+    }
+    
+    func getMovieDetails(movieId: Int) {
+        networkManager.request(requestModel: MoviesRequests.movieDetails(movieId: movieId)) { [weak self] (result: Swift.Result<String, NetworkError>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let movieDetailsJSON):
+                self.delegate?.getMovieDetailsSuccess(jsonResponse: movieDetailsJSON)
+                
+            case .failure(let error):
+                self.delegate?.getMovieDetailsFailed(error: error)
             }
         }
     }

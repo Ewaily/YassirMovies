@@ -19,7 +19,7 @@ protocol MoviesListPresenterResponseDelegate: AnyObject {
     func hideIndicatorView()
     func showErrorAlert()
     func loadTableView()
-    func navigateToMovieDetailsScreen(movie: Result)
+    func navigateToMovieDetailsScreen(movieId: Int)
 }
 
 class MoviesListPresenter {
@@ -50,7 +50,7 @@ class MoviesListPresenter {
 extension MoviesListPresenter: MoviesListPresenterProtocol {
     func didSelectRow(index: Int) {
         guard let moviesList = moviesList, !moviesList.isEmpty else { return }
-        delegate?.navigateToMovieDetailsScreen(movie: moviesList[index])
+        delegate?.navigateToMovieDetailsScreen(movieId: moviesList[index].id)
     }
     
     func getMoviesListTableViewCellModel(index: Int) -> MoviesListTableViewCellModel {

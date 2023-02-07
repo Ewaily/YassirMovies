@@ -7,9 +7,14 @@
 
 import Foundation
 
-protocol MovieDetailsUseCaseProtocol {}
+protocol MovieDetailsUseCaseProtocol {
+    func getMovieDetails(movieId: Int)
+}
 
-protocol MovieDetailsUseCaseResponseDelegate: AnyObject {}
+protocol MovieDetailsUseCaseResponseDelegate: AnyObject {
+    func getMovieDetailsSuccess(movie: Movie)
+    func getMovieDetailsFailed(error: NetworkError)
+}
 
 class MovieDetailsUseCase {
     // MARK: - Private properties -
@@ -34,6 +39,27 @@ class MovieDetailsUseCase {
 
 // MARK: - Extensions -
 
-extension MovieDetailsUseCase: MovieDetailsUseCaseProtocol {}
+extension MovieDetailsUseCase: MovieDetailsUseCaseProtocol {
+    func getMovieDetails(movieId: Int) {
+        repository?.getMovieDetails(movieId: movieId)
+    }
+}
 
-extension MovieDetailsUseCase: MoviesRepositoryResponseDelegate {}
+extension MovieDetailsUseCase: MoviesRepositoryResponseDelegate {
+    func getMovieDetailsSuccess(jsonResponse: String) {
+        let responseData = Data(jsonResponse.utf8)
+        let successResult = responseData.decode(class: Movie.self)
+        
+        switch successResult {
+        case .success(let movieResult):
+            delegate?.getMovieDetailsSuccess(movie: movieResult)
+            
+        case .failure:
+            delegate?.getMovieDetailsFailed(error: NetworkError.decodingError)
+        }
+    }
+    
+    func getMovieDetailsFailed(error: NetworkError) {
+        delegate?.getMovieDetailsFailed(error: error)
+    }
+}
